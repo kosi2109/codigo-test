@@ -1,0 +1,724 @@
+{
+	"info": {
+		"_postman_id": "1a3b0d5b-4914-4bf7-9bb4-e02e5764587a",
+		"name": "Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32168868"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Si Thu Htet\",\n    \"phone\" : \"09781903836\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Host}}/api/v1/auth/register"
+					},
+					"response": [
+						{
+							"name": "Success Req",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Si Thu Htet\",\n    \"phone\" : \"0938293829\",\n    \"password\": \"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{Host}}/api/v1/auth/register"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-dqB5gX3xuXJkmnPvGh8wYPilmE8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 14:17:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "User has successfully created. We've sent otp to your phone number."
+						},
+						{
+							"name": "Validation Fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"\",\n    \"phone\" : \"\",\n    \"password\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{Host}}/api/v1/auth/register"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "509"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1fd-aCpmPhAwHOmx2+eD2fz9I/0/Z/c\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 14:18:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Phone is required.\",\n            \"path\": \"phone\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Mobile number must be between 8 and 12 characters long\",\n            \"path\": \"phone\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Password is required.\",\n            \"path\": \"password\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Password must be greater than 8.\",\n            \"path\": \"password\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Name is required.\",\n            \"path\": \"name\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "OTP Verify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\" : \"09781903836\",\n    \"otp\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Host}}/api/v1/auth/verify-otp"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\" : \"09781903836\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Host}}/api/v1/auth/login"
+					},
+					"response": [
+						{
+							"name": "Validation Fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": "{{Host}}/api/v1/auth/login"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "423"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a7-p4WDDm2coTNfmQP3rQQ2FkCCl8Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 14:19:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Phone is required.\",\n            \"path\": \"phone\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Mobile number must be between 8 and 12 characters long\",\n            \"path\": \"phone\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Password is required.\",\n            \"path\": \"password\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Password must be greater than 8.\",\n            \"path\": \"password\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "OTP Not verified",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\" : \"0938293829\",\n    \"password\": \"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{Host}}/api/v1/auth/login"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-b+Ye82UBxpkvxfyn/3CS+SDn1DM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 14:20:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"msg\": \"Phone number is not verified .\",\n            \"path\": \"user\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{Host}}/api/v1/auth/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Access Token from refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshtoken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU3ZGYwOTU0M2JjZDYyYWMxNjgwY2IiLCJpYXQiOjE3MTcwMzQ4OTAsImV4cCI6MTcxNzEyMTI5MH0.QA4suiSFSWGafly4dc90gPmg5wDWVIqEXG0NjrZ8ESQ\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Host}}/api/v1/auth/refresh-token"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshtoken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU3NDBkZGFlY2UxNTAzYjk3NmUzOWQiLCJpYXQiOjE3MTY5OTcwNjgsImV4cCI6MTcxNzA4MzQ2OH0.GWhkExjOgsc3nxlJuCHj4jeAHVBg_ob-JrVCQW9-9wk\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{Host}}/api/v1/auth/refresh-token"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "223"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"df-eKs3tgR3nOMbZgKgoDZILbnedIg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 15:39:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"665740ddaece1503b976e39d\",\n    \"accesstoken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU3NDBkZGFlY2UxNTAzYjk3NmUzOWQiLCJpYXQiOjE3MTY5OTcxNzEsImV4cCI6MTcxNjk5NzE4MX0.ICZktLNHzI0_ZC_jcmHVhz0pwY_Qm-XFyZEPFyLeSrA\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU3NDBkZGFlY2UxNTAzYjk3NmUzOWQiLCJpYXQiOjE3MTY5OTcyNTQsImV4cCI6MTcxNjk5NzI2NH0.fOYKjoIdK9908DEqn8-T_itgLK9RrPhHIvCmO8pStRU"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{Host}}/api/v1/auth/me"
+					},
+					"response": [
+						{
+							"name": "when access token is expired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{Host}}/api/v1/auth/me"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-z9s+co+gHHiS01b/Qx8eTRhNnbM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 15:40:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"msg\": \"Invalid Token\",\n            \"path\": \"auth\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "when token is valid",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{Host}}/api/v1/auth/me"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-ZqtK0PYUbhlaaMZmCr6mzrtqdsg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 15:41:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"665740ddaece1503b976e39d\",\n    \"name\": \"Si Thu Htet\",\n    \"phone\": \"0938293829\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Coupon",
+			"item": [
+				{
+					"name": "Coupon List",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{Host}}/api/v1/coupons"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{Host}}/api/v1/coupons"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "625"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"271-2V+av7Wt0f9u6hZA4AZm2oc5lts\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 17:24:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"665764be48fb558e20405726\",\n            \"name\": \"coupon 1\",\n            \"is_limited\": false,\n            \"limited_qty\": 0,\n            \"amount\": 1,\n            \"point_require\": 100,\n            \"createdAt\": \"2024-05-29T17:24:14.061Z\",\n            \"updatedAt\": \"2024-05-29T17:24:14.061Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"665764be48fb558e20405728\",\n            \"name\": \"coupon 2\",\n            \"is_limited\": false,\n            \"limited_qty\": 0,\n            \"amount\": 5,\n            \"point_require\": 500,\n            \"createdAt\": \"2024-05-29T17:24:14.076Z\",\n            \"updatedAt\": \"2024-05-29T17:24:14.076Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"665764be48fb558e2040572a\",\n            \"name\": \"coupon 3\",\n            \"is_limited\": true,\n            \"limited_qty\": 5,\n            \"amount\": 10,\n            \"point_require\": 100,\n            \"createdAt\": \"2024-05-29T17:24:14.080Z\",\n            \"updatedAt\": \"2024-05-29T17:24:14.080Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Exchange",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{Host}}/api/v1/coupons/exchange"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Member",
+			"item": [
+				{
+					"name": "pruchase history",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU3ZGYwOTU0M2JjZDYyYWMxNjgwY2IiLCJpYXQiOjE3MTcwMzU0ODMsImV4cCI6MTcxNzAzNjA4M30.M8K4qlagFKAZYENJjGEbDJ8aXo5Z8kOl5b2ZoNJbRCM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{Host}}/api/v1/users/purchase-history"
+					},
+					"response": [
+						{
+							"name": "Sample History",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{Host}}/api/v1/users/purchase-history"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "582"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"246-j3pLIHwZbePDHPebI5el6pqDjZ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 May 2024 18:10:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"_id\": \"66576f592a19bf4d291ebc01\",\n            \"user_id\": \"665740ddaece1503b976e39d\",\n            \"products\": [\n                {\n                    \"product_id\": {\n                        \"_id\": \"665752c38d275aea3eac590c\",\n                        \"name\": \"testing 2\",\n                        \"price\": 30,\n                        \"is_alcoholic\": false,\n                        \"createdAt\": \"2024-05-29T16:07:31.738Z\",\n                        \"updatedAt\": \"2024-05-29T16:07:31.738Z\",\n                        \"__v\": 0\n                    },\n                    \"qty\": 3\n                },\n                {\n                    \"product_id\": {\n                        \"_id\": \"665752c38d275aea3eac590e\",\n                        \"name\": \"testing 3\",\n                        \"price\": 20,\n                        \"is_alcoholic\": true,\n                        \"createdAt\": \"2024-05-29T16:07:31.741Z\",\n                        \"updatedAt\": \"2024-05-29T16:07:31.741Z\",\n                        \"__v\": 0\n                    },\n                    \"qty\": 2\n                }\n            ],\n            \"total\": 130,\n            \"createdAt\": \"2024-05-29T18:09:29.752Z\",\n            \"updatedAt\": \"2024-05-29T18:09:29.752Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Current Points",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Member qr",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{Host}}/api/v1/users/qrcode"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "{{Host}}/api/v1/users/qrcode"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4386"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1122-8oTsOj2VNqbHCZxfM82Ms1jnLFk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 May 2024 01:51:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "<img src=\"data:image/png;base64,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\">"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "POS",
+			"item": [
+				{
+					"name": "POS Sale api",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\" : \"6657df09543bcd62ac1680cb\",\n    \"products\" : [\n        {\n            \"product_id\" : \"6657e279c65d3fa270bb1a6b\",\n            \"qty\" : 3\n        },\n        {\n            \"product_id\" : \"6657e279c65d3fa270bb1a71\",\n            \"qty\" : 2\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Host}}/api/v1/pos/sale"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{Host}}/api/v1/products"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
